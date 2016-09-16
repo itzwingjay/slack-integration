@@ -12,7 +12,14 @@ app.use(bodyParser.json());
 app.post('/', function(req, res){
 	if(req.get('X-GitHub-Event') == 'push'){
 		slack.sendMessage({
-			'text': '<' + req.body.sender.url + '|' + req.body.sender.login + '> ' + ' pushed <' + req.body.repository.url + '|' + req.body.repository.name + '>'
+			'attachment' : [
+				{
+					"text": '<' + req.body.sender.html_url + '|' + req.body.sender.login + '> ' + ' pushed to <' + req.body.repository.url + '|' + req.body.repository.name + '>',
+					"text": '< Commit message is: ' + req.body.commits.url + '|' + req.body.commits.message + '>',
+					"image_url": req.body.sender.avatar_url,
+					"color": "#c7f3f3"
+				}
+			]
 		});
 	}
 	res.sendStatus(200);
