@@ -21,6 +21,11 @@ app.post('/', function(req, res){
 			]
 		});
 	}
+	if(req.get('X-GitHub-Event')== 'pull request'){
+		slack.sendMessage({
+
+		});
+	}
 	res.sendStatus(200);
 });
 
@@ -32,4 +37,4 @@ app.get("/",function(req,res){
 
 //app.use('/',router);
 app.listen(port);
-console.log("Server is running on 3000");
+console.log("Server is running on 8080");
