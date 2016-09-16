@@ -14,8 +14,7 @@ app.post('/', function(req, res){
 		slack.sendMessage({
 			'attachments' : [
 				{
-					"text": '<' + req.body.sender.html_url + '|' + req.body.sender.login + '> ' + ' pushed to <' + req.body.repository.url + '|' + req.body.repository.name + '>',
-					"text": '< Commit message is: ' + req.body.commits.url + '|' + req.body.commits.message + '>',
+					"text": '<' + req.body.sender.html_url + '|' + req.body.sender.login + '> ' + ' pushed to <' + req.body.repository.url + '|' + req.body.repository.name + '>\n' + '< Commit message is: ' + req.body.commits.url + '|' + req.body.commits.message + '>',
 					"image_url": req.body.sender.avatar_url,
 					"color": "#c7f3f3"
 				}
