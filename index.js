@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 // var router = express.Router();
+var port = process.env.PORT || 8080
 var slack = require('./slack.js');
 
 
@@ -24,5 +25,5 @@ app.get("/",function(req,res){
 });
 
 //app.use('/',router);
-app.listen(8080);
+app.listen(port);
 console.log("Server is running on 3000");
