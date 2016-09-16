@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.post('/', function(req, res){
 	if(req.get('X-GitHub-Event') == 'push'){
 		slack.sendMessage({
-			'attachment' : [
+			'attachments' : [
 				{
 					"text": '<' + req.body.sender.html_url + '|' + req.body.sender.login + '> ' + ' pushed to <' + req.body.repository.url + '|' + req.body.repository.name + '>',
 					"text": '< Commit message is: ' + req.body.commits.url + '|' + req.body.commits.message + '>',
